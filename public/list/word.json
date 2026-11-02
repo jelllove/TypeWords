@@ -19,6 +19,170 @@
     "cover": null,
     "hidden": false,
     "category": "中国考试",
-    "tags": ["大学英语"]
+    "tags": [
+      "大学英语"
+    ]
+  },
+  {
+    "id": 2,
+    "enName": "cet6",
+    "name": "CET-6",
+    "description": "大学英语六级词库（社区整理版）",
+    "url": "CET6_T.json",
+    "length": 2345,
+    "language": "en",
+    "translateLanguage": "zh-CN",
+    "version": 1,
+    "type": "word",
+    "recommended": true,
+    "hidden": false,
+    "category": "中国考试",
+    "tags": [
+      "大学英语"
+    ]
+  },
+  {
+    "id": 3,
+    "enName": "kaoyan",
+    "name": "考研英语",
+    "description": "研究生入学考试英语词库（社区整理版）",
+    "url": "KaoYan_3_T.json",
+    "length": 3727,
+    "language": "en",
+    "translateLanguage": "zh-CN",
+    "version": 1,
+    "type": "word",
+    "recommended": true,
+    "hidden": false,
+    "category": "中国考试",
+    "tags": [
+      "考研英语"
+    ]
+  },
+  {
+    "id": 4,
+    "enName": "ielts",
+    "name": "IELTS 雅思",
+    "description": "雅思考试英语词库（社区整理版）",
+    "url": "IELTS_3_T.json",
+    "length": 3575,
+    "language": "en",
+    "translateLanguage": "zh-CN",
+    "version": 1,
+    "type": "word",
+    "recommended": true,
+    "hidden": false,
+    "category": "出国考试",
+    "tags": [
+      "雅思"
+    ]
+  },
+  {
+    "id": 5,
+    "enName": "toefl",
+    "name": "TOEFL 托福",
+    "description": "托福考试英语词库（社区整理版）",
+    "url": "TOEFL_3_T.json",
+    "length": 4264,
+    "language": "en",
+    "translateLanguage": "zh-CN",
+    "version": 1,
+    "type": "word",
+    "recommended": true,
+    "hidden": false,
+    "category": "出国考试",
+    "tags": [
+      "托福"
+    ]
+  },
+  {
+    "id": 6,
+    "enName": "gre",
+    "name": "GRE",
+    "description": "GRE 考试英语词库（社区整理版）",
+    "url": "GRE_3_T.json",
+    "length": 6514,
+    "language": "en",
+    "translateLanguage": "zh-CN",
+    "version": 1,
+    "type": "word",
+    "recommended": true,
+    "hidden": false,
+    "category": "出国考试",
+    "tags": [
+      "研究生入学"
+    ]
+  },
+  {
+    "id": 7,
+    "enName": "gmat",
+    "name": "GMAT",
+    "description": "GMAT 考试英语词库（社区整理版）",
+    "url": "GMAT_3_T.json",
+    "length": 3047,
+    "language": "en",
+    "translateLanguage": "zh-CN",
+    "version": 1,
+    "type": "word",
+    "recommended": true,
+    "hidden": false,
+    "category": "出国考试",
+    "tags": [
+      "商科入学"
+    ]
+  },
+  {
+    "id": 8,
+    "enName": "sat",
+    "name": "SAT",
+    "description": "SAT 考试英语词库（社区整理版）",
+    "url": "SAT_3_T.json",
+    "length": 4463,
+    "language": "en",
+    "translateLanguage": "zh-CN",
+    "version": 1,
+    "type": "word",
+    "recommended": true,
+    "hidden": false,
+    "category": "出国考试",
+    "tags": [
+      "本科入学"
+    ]
+  },
+  {
+    "id": 9,
+    "enName": "tem4",
+    "name": "TEM-4 专四",
+    "description": "英语专业四级词库（社区整理版）",
+    "url": "Level4luan_2_T.json",
+    "length": 4025,
+    "language": "en",
+    "translateLanguage": "zh-CN",
+    "version": 1,
+    "type": "word",
+    "recommended": true,
+    "hidden": false,
+    "category": "中国考试",
+    "tags": [
+      "英语专业"
+    ]
+  },
+  {
+    "id": 10,
+    "enName": "tem8",
+    "name": "TEM-8 专八",
+    "description": "英语专业八级词库（社区整理版）",
+    "url": "Level8luan_2_T.json",
+    "length": 12197,
+    "language": "en",
+    "translateLanguage": "zh-CN",
+    "version": 1,
+    "type": "word",
+    "recommended": true,
+    "hidden": false,
+    "category": "中国考试",
+    "tags": [
+      "英语专业"
+    ]
   }
 ]

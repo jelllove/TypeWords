@@ -129,6 +129,7 @@ export default defineNuxtConfig({
   ],
   // 运行时配置
   runtimeConfig: {
+    localDataDir: process.env.TYPEWORDS_DATA_DIR || resolve(__dirname, 'data'),
     public: {
       apiBase: process.env.API_BASE || 'http://localhost/',
       origin: process.env.ORIGIN || 'https://typewords.cc',
@@ -140,7 +141,7 @@ export default defineNuxtConfig({
   },
   // 构建配置
   build: {
-    transpile: ['vue-virtual-scroller', 'vxe-table'],
+    transpile: ['vue-virtual-scroller', 'vxe-table', resolve(__dirname, 'shared/local-data.ts')],
   },
   // 实验性功能
   experimental: {
@@ -158,6 +159,7 @@ export default defineNuxtConfig({
     },
   },
   devServer: {
+    host: '127.0.0.1',
     port: 5567,
   },
   nitro: {

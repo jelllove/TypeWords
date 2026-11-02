@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { ref } from 'vue'
 import { BaseButton, BaseIcon, Toast } from '@/base'
+import { getStoredString, setStoredString } from '@/core/utils/storage'
 
 // 小程序二维码推广
 const LS_KEY_MINI_QR_DATE = 'tw_mini_qr_last_date'
@@ -13,11 +14,11 @@ function getToday() {
 }
 
 function isNeverShowMiniQr() {
-  return localStorage.getItem(LS_KEY_MINI_QR_NEVER) === '1'
+  return getStoredString(LS_KEY_MINI_QR_NEVER) === '1'
 }
 function shouldAutoShowMiniQr() {
   if (isNeverShowMiniQr()) return false
-  const lastDate = localStorage.getItem(LS_KEY_MINI_QR_DATE)
+  const lastDate = getStoredString(LS_KEY_MINI_QR_DATE)
   if (lastDate === getToday()) return false
   return true
 }
@@ -28,7 +29,7 @@ function neverShowMiniQr() {
     clearTimeout(miniQrAutoTimer)
     miniQrAutoTimer = null
   }
-  localStorage.setItem(LS_KEY_MINI_QR_NEVER, '1')
+  setStoredString(LS_KEY_MINI_QR_NEVER, '1')
   Toast.success('关闭成功')
 }
 
@@ -47,7 +48,7 @@ function handleMiniIconLeave() {
 onMounted(() => {
   if (shouldAutoShowMiniQr()) {
     setTimeout(() => {
-      localStorage.setItem(LS_KEY_MINI_QR_DATE, getToday())
+      setStoredString(LS_KEY_MINI_QR_DATE, getToday())
       showMiniQr = true
       miniQrAutoTimer = setTimeout(handleMiniIconLeave, 5000)
     }, 1000)

@@ -5,7 +5,7 @@ import { withAppBaseURL } from '@/core/utils/base-url'
 
 export default defineNuxtPlugin(async nuxtApp => {
   if (
-    !location.href.includes('localhost') &&
+    !['localhost', '127.0.0.1', '[::1]'].includes(location.hostname) &&
     !location.href.includes('192.168') &&
     !location.href.includes('172.16') &&
     !location.href.includes('10.0')

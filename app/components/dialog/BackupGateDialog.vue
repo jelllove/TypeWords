@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { watch } from 'vue'
+import { getStoredString } from '@/core/utils/storage'
 import { BaseButton, Dialog } from '@/base'
 import { useExport } from '@/core/hooks/export'
 import { IS_DEV } from '@/core/config/env.ts'
@@ -17,7 +18,7 @@ watch(model, visible => {
 
 async function onBackup() {
   backupTriggered = true
-  let disabled = localStorage.getItem('disable360')
+  let disabled = getStoredString('disable360')
   if (disabled) {
     return Toast.success('已跳过导出')
   }

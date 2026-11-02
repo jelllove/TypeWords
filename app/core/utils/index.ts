@@ -28,7 +28,7 @@ import {
 } from '../config/env'
 import { nextTick } from 'vue'
 import { Toast } from '@/base'
-import { get } from 'idb-keyval'
+import { get } from './storage'
 import { nanoid } from 'nanoid'
 import { saveHashSnapshot } from '../composables/useDataSyncPersistence'
 import { withAppBaseURL } from './base-url'

@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { Toast } from '@/base'
 import { Origin } from '@/core/config/env.ts'
-import { set } from 'idb-keyval'
+import { set, setStoredString } from '@/core/utils/storage'
 import { defineAsyncComponent } from 'vue'
 
 const Dialog = defineAsyncComponent(() => import('@/base/dialog/Dialog.vue'))
@@ -28,10 +28,10 @@ async function migrateFromOldSite() {
       const payload = event.data.payload
       console.log('payload', payload)
 
-      // 写入 localStorage
+      // 将旧浏览器数据写入本地文件存储
       LS_KEYS.forEach(key => {
         if (payload.localStorage[key] !== undefined) {
-          localStorage.setItem(key, payload.localStorage[key])
+          setStoredString(key, payload.localStorage[key])
         }
       })
 
@@ -67,7 +67,7 @@ async function migrateFromOldSite() {
 async function transfer() {
   try {
     await migrateFromOldSite()
-    localStorage.setItem('__migrated_from_2study_top__', '1')
+    setStoredString('__migrated_from_2study_top__', '1')
     console.log('迁移完成')
     Toast.success('迁移完成')
     model.value = false

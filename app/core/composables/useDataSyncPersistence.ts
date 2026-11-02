@@ -31,7 +31,7 @@ import { type BaseState, getDefaultBaseState, getDefaultSettingState, useBaseSto
 import type { BackupData, SaveData, Snapshot } from '../types/types.ts'
 import { SyncDataType, CompareResult, DictType } from '../types/enum'
 import { Supabase } from '../utils/supabase'
-import { del, get, set } from 'idb-keyval'
+import { del, get, set } from '../utils/storage'
 import type { SupabaseClient } from '@supabase/supabase-js'
 import { Toast } from '@/base'
 

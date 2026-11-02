@@ -7,8 +7,11 @@
     "build": "nuxt build",
     "generate": "nuxt generate",
     "preview": "nuxt preview",
+    "serve": "node .output/server/index.mjs",
+    "local": "node scripts/start-local.mjs",
     "i18n:write": "gulp i18nWrite",
-    "test": ""
+    "dicts:import": "node scripts/import-vocabulary.mjs",
+    "test": "node --experimental-strip-types --test tests/local-storage.test.ts tests/vocabulary.test.mjs tests/launcher.test.mjs"
   },
   "dependencies": {
     "@floating-ui/dom": "^1.7.4",

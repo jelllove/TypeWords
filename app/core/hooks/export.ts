@@ -8,7 +8,7 @@ import {
   SAVE_DICT_KEY,
   SAVE_SETTING_KEY,
 } from '../config/env'
-import { get } from 'idb-keyval'
+import { get } from '../utils/storage'
 import saveAs from 'file-saver'
 import dayjs from 'dayjs'
 import { Toast } from '@/base'

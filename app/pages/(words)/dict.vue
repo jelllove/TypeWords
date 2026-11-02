@@ -1,4 +1,5 @@
 <script setup lang="tsx">
+import { getStoredString, setStoredString } from '@/core/utils/storage'
 import {
   BackIcon,
   BaseButton,
@@ -458,7 +459,7 @@ watch(
       const Shepherd = await loadJsLib('Shepherd', LIB_JS_URL.SHEPHERD)
       const tour = new Shepherd.Tour(TourConfig)
       tour.on('cancel', () => {
-        localStorage.setItem('tour-guide', '1')
+        setStoredString('tour-guide', '1')
       })
       tour.addStep({
         id: 'step3',
@@ -500,7 +501,7 @@ watch(
         ],
       })
 
-      const r = localStorage.getItem('tour-guide')
+      const r = getStoredString('tour-guide')
       if (settingStore.first && !r && !isMobile()) {
         tour.start()
       }

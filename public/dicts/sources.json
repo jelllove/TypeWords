@@ -1,0 +1,92 @@
+{
+  "repository": "https://github.com/RealKai42/qwerty-learner",
+  "revision": "1182426f2bd0a28c95302c33f9e19136b1262a70",
+  "license": "GPL-3.0",
+  "licenseFile": "LICENSE.qwerty-learner",
+  "licenseSha256": "3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986",
+  "attribution": "qwerty-learner contributors; upstream dictionary source: kajweb/dict",
+  "conversion": "Renamed word/phonetic fields; extracted part-of-speech suffixes; merged case-insensitive duplicates. Unavailable example, phrase, synonym and etymology fields are empty.",
+  "dictionaries": [
+    {
+      "enName": "cet6",
+      "sourcePath": "public/dicts/CET6_T.json",
+      "sourceSha256": "ed5e76b945b7c7bc567a75d44a6eaeda137c767960121057deab52593e245d6e",
+      "outputPath": "en/word/CET6_T.json",
+      "outputSha256": "777af2e714bc5d1ba86ce54efb1ddc5f53f0aaabc09e4911166ea6cbec3aede1",
+      "sourceEntries": 2345,
+      "words": 2345
+    },
+    {
+      "enName": "kaoyan",
+      "sourcePath": "public/dicts/KaoYan_3_T.json",
+      "sourceSha256": "2997157b54912bb56118cf3153fb891c452fbfe813da8d21bb219ea7f2829090",
+      "outputPath": "en/word/KaoYan_3_T.json",
+      "outputSha256": "8ba135adaf4bf4d6d049e94e467a4c01601fae5dec179acdd8e3b6d2b88ace67",
+      "sourceEntries": 3728,
+      "words": 3727
+    },
+    {
+      "enName": "ielts",
+      "sourcePath": "public/dicts/IELTS_3_T.json",
+      "sourceSha256": "63f64c79c96270f2a74f7bfebe952efe1d4c1f09b887bc3e4560a989b8873ad1",
+      "outputPath": "en/word/IELTS_3_T.json",
+      "outputSha256": "eca5455d1de0b5d381413dadbcf5ea01b0ffade21fae38e3fd6f6427ab0af47a",
+      "sourceEntries": 3575,
+      "words": 3575
+    },
+    {
+      "enName": "toefl",
+      "sourcePath": "public/dicts/TOEFL_3_T.json",
+      "sourceSha256": "a1209981905e8dacd3e52774ecc1157a6f5dd1417240a5ded08797c51a835d4c",
+      "outputPath": "en/word/TOEFL_3_T.json",
+      "outputSha256": "f549c2da48b05e9bd6a0a22acec20737dafc505538905f6c24f15d8be49548fb",
+      "sourceEntries": 4264,
+      "words": 4264
+    },
+    {
+      "enName": "gre",
+      "sourcePath": "public/dicts/GRE_3_T.json",
+      "sourceSha256": "728890a7e9e766c2a07c02b9c8ac638274cf04b096e15ed8cd6abc0723366e40",
+      "outputPath": "en/word/GRE_3_T.json",
+      "outputSha256": "4d2a1d170ba941c23cfc08030099c86c385caccae97c14fd45eb3c92059ac8fb",
+      "sourceEntries": 6515,
+      "words": 6514
+    },
+    {
+      "enName": "gmat",
+      "sourcePath": "public/dicts/GMAT_3_T.json",
+      "sourceSha256": "ed8ce2700e4af00421f7f8a663e4eb754da000bb19ac0d922cb2d02bc1a22f94",
+      "outputPath": "en/word/GMAT_3_T.json",
+      "outputSha256": "bb99a0d801f9b8d4176d396dcd7944308dcc159631850e0956e0c0c471bf844c",
+      "sourceEntries": 3047,
+      "words": 3047
+    },
+    {
+      "enName": "sat",
+      "sourcePath": "public/dicts/SAT_3_T.json",
+      "sourceSha256": "801f17a1b63a0377dc331214e5af2900279c93b6baa8a828d6e639ae5db48310",
+      "outputPath": "en/word/SAT_3_T.json",
+      "outputSha256": "d8bcf2d853301e041d79a0331882d4c299fb6f6413914978dd807db8bb01dcb9",
+      "sourceEntries": 4464,
+      "words": 4463
+    },
+    {
+      "enName": "tem4",
+      "sourcePath": "public/dicts/Level4luan_2_T.json",
+      "sourceSha256": "3c48b2ece3603b63daca4e887e615fb0a732266a568fe4be8ef2d1f497a4a722",
+      "outputPath": "en/word/Level4luan_2_T.json",
+      "outputSha256": "6267ffcf5d8aa195ef69ce85116291f32e31ed14ed9f86cd0e994f31efaa77aa",
+      "sourceEntries": 4025,
+      "words": 4025
+    },
+    {
+      "enName": "tem8",
+      "sourcePath": "public/dicts/Level8luan_2_T.json",
+      "sourceSha256": "1203dc5777cea51998f6de22cf2f7565c9a87185e7f1593065e708de14fb647d",
+      "outputPath": "en/word/Level8luan_2_T.json",
+      "outputSha256": "f2650dc3ee5bae513bbc949fcb060e0459fc7614412735811fedf7bdccafc12b",
+      "sourceEntries": 12197,
+      "words": 12197
+    }
+  ]
+}

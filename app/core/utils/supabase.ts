@@ -1,6 +1,7 @@
 import { createClient } from '@supabase/supabase-js'
 import { Toast } from '@/base'
 import { useRuntimeStore } from '../stores'
+import { getStoredString, removeStoredString, setStoredString } from './storage'
 
 export const SUPABASE_CONFIG_KEY = 'supabase_config'
 
@@ -21,7 +22,7 @@ const defaultConfig: SupabaseConfig = {
 
 export function getConfig(): SupabaseConfig | null {
   try {
-    const raw = localStorage.getItem(SUPABASE_CONFIG_KEY)
+    const raw = getStoredString(SUPABASE_CONFIG_KEY)
     if (!raw) return null
     const c = JSON.parse(raw) as Partial<SupabaseConfig>
     if (!c || !c.url || !c.key) return null
@@ -44,7 +45,7 @@ export function setConfig(partial: Partial<SupabaseConfig>): void {
     status: partial.status ?? cur.status,
     statusMessage: partial.statusMessage !== undefined ? partial.statusMessage : cur.statusMessage,
   }
-  localStorage.setItem(SUPABASE_CONFIG_KEY, JSON.stringify(next))
+  setStoredString(SUPABASE_CONFIG_KEY, JSON.stringify(next))
 }
 
 export class Supabase {
@@ -68,7 +69,7 @@ export class Supabase {
   }
 
   static removeConfig(): void {
-    localStorage.removeItem(SUPABASE_CONFIG_KEY)
+    removeStoredString(SUPABASE_CONFIG_KEY)
   }
 
   /** 拿到客户端；仅根据 url/key 建连，不依赖 status（供设置页保存配置时验表使用） */

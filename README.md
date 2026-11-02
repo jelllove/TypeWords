@@ -69,21 +69,42 @@
 
 ### Vocabulary Library
 
-Built-in commonly used vocabulary including CET-4, CET-6, GMAT, GRE, IELTS, SAT, TOEFL, Graduate English, TEM-4, TEM-8, and more (official website only).
-Designed to meet most users' vocabulary learning needs. Community contributions of additional vocabulary are welcome.
+The local version includes 10 vocabulary libraries: CET-4, CET-6, postgraduate English, IELTS, TOEFL, GRE, GMAT, SAT, TEM-4 and TEM-8. Select them from the recommended libraries or the full vocabulary list.
+
+The nine additional community dictionaries are adapted from [qwerty-learner](https://github.com/RealKai42/qwerty-learner), under its GPL-3.0 license. They include Chinese definitions and available UK/US phonetics, but not detailed examples, phrases, synonyms or etymologies. They are study lists, not official exhaustive exam syllabuses. The existing CET-4 dictionary and learning records are unchanged.
+
+All dictionary files ship locally; no runtime download from the official website is required. Online pronunciation still needs a network connection. See the [source manifest](./public/dicts/sources.json), [upstream license](./public/dicts/LICENSE.qwerty-learner) and [word counts](./docs/README.zh-CN.md#词库). Run `pnpm run dicts:import` to regenerate the same pinned revision (network required for this import command only); it never accesses the learning data directory.
 
 ## Running the Project
 
-#### Note: This project can run standalone with data saved locally. Manual backup is required when switching devices; this does not affect normal usage.
+#### Note: This version requires a local Node server and saves data in a folder on your computer, not in the browser database.
 
 This project is built with `Nuxt` and requires a Node.js environment.
 
-1. Install NodeJS, refer to the [official documentation](https://nodejs.org/en/download)
+1. Install Node.js 22.18+ (or a newer LTS), refer to the [official documentation](https://nodejs.org/en/download)
 2. The project is large. It's recommended to use `git clone --depth 1 https://github.com/zyronon/TypeWords.git` to clone only the latest commit. GitHub's Download ZIP feature will not work properly.
 3. In the project root directory, open a terminal and run `pnpm install` to download dependencies.
 4. Run `pnpm run dev` to start the project. The default address is [`http://localhost:5567`](http://localhost:5567)
 5. Open [`http://localhost:5567`](http://localhost:5567) in your browser to access the project.
-6. Run `pnpm run generate` to build the project files.
+6. For production, run `pnpm run build`, then `pnpm run serve` from the project root (default URL: `http://localhost:3000`). Set `HOST=127.0.0.1` to bind only to this computer.
+
+### Double-click startup on Windows
+
+After installing Node.js 22.18+ and running `pnpm install` and `pnpm run build`, double-click [TypeWords.cmd](./TypeWords.cmd). It starts the production build, waits for the local data service, and opens `http://127.0.0.1:5567/words`. Keep the console window open; Ctrl+C or closing it stops the server.
+
+The launcher uses the project `data` folder by default. It reuses an existing TypeWords service only when the port and data folder match, and reports conflicts instead of stopping other applications. `TYPEWORDS_PORT` selects another port; `NUXT_LOCAL_DATA_DIR` or `TYPEWORDS_DATA_DIR` selects another data directory. `pnpm run local` is the command-line equivalent; `--no-browser` suppresses browser opening for tests.
+
+The launcher requires the installed Node.js runtime and the complete `.output` directory, but does not require pnpm to start an already-built release. Build artifacts and learning data are not committed; a fresh clone must be installed and built first.
+
+### Local data storage
+
+- All learning records, FSRS data, settings, practice caches, uploaded audio and history backups are stored in `data/typewords.json`. Audio is stored as Base64. The folder is Git-ignored and must not be published.
+- Browsers using the same server share this file. Clearing browser data does not delete learning records. Avoid editing the same learning records in multiple pages simultaneously.
+- **Settings → Data management** shows the actual directory and provides **Migrate old browser data** and **Clear local folder data**. Existing ZIP import/export is still supported. Migration is explicit and never runs automatically.
+- Clearing removes all user data, audio, backups and Supabase configuration from the file, leaving only empty database metadata. It does not delete built-in dictionaries, old browser data or remote Supabase data. Export a backup first; other open pages must reload.
+- Stop the server before copying the entire `data` folder for a complete backup or moving it to another computer.
+- Set `TYPEWORDS_DATA_DIR` before starting to use another directory (PowerShell example: `$env:TYPEWORDS_DATA_DIR = 'D:\TypeWordsData'`). Built servers also accept `NUXT_LOCAL_DATA_DIR`.
+- A writable disk and a running local Node server are required. Static-only hosting via `pnpm run generate` is no longer supported. The data API accepts local requests only; do not expose this service publicly. File errors are reported explicitly, without falling back to browser storage.
 
 ## Features and Suggestions
 
@@ -107,4 +128,3 @@ Of course, sponsorship is not required for use—sharing the project, submitting
 
 <img width="300" height="390" alt="practice words" src="/public/imgs/zhifubao.png" />
 <img width="300" height="390" alt="practice words" src="/public/imgs/weixin.png" />
-

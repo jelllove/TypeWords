@@ -1,7 +1,7 @@
 import type { PracticeData, TaskWords } from '../types'
 import { WordPracticeMode, WordPracticeStage, WordPracticeType } from '../types/enum'
 import type { PracticeState } from '../stores'
-import { get, set } from 'idb-keyval'
+import { get, set } from './storage'
 
 type CacheConfig = { key: string; version: number }
 
@@ -222,28 +222,7 @@ export function checkAndUpgradePracticeWordCache(
   }
 }
 
-/**
- * 尝试从 localStorage 迁移老数据到 IndexedDB。
- * 如果 idb 中无数据，但 localStorage 中有，则迁移并删除 localStorage 中的 key。
- * 老数据是 JSON 字符串格式，迁移时解析为对象再存入 idb。
- */
-async function migrateFromLocalStorage<T>(config: CacheConfig): Promise<LocalCacheResult<T> | null> {
-  try {
-    const raw = localStorage.getItem(config.key)
-    if (!raw) return null
-    const parsed = JSON.parse(raw) as LocalCacheResult<T>
-    // 迁移到 idb
-    await set(config.key, raw)
-    // 删除 localStorage 中的老数据
-    localStorage.removeItem(config.key)
-    console.log(`[cache] migrated ${config.key} from localStorage to idb`)
-    return parsed
-  } catch {
-    return null
-  }
-}
-
-/** 从 idb 读取带 meta 的缓存；无数据或解析失败返回 null */
+/** 从本地文件读取带 meta 的缓存；无数据或解析失败返回 null */
 async function getLocalWithMeta<T>(config: CacheConfig): Promise<LocalCacheResult<T> | null> {
   const raw = await get(config.key)
   if (raw) {
@@ -257,8 +236,7 @@ async function getLocalWithMeta<T>(config: CacheConfig): Promise<LocalCacheResul
     }
     return raw as LocalCacheResult<T>
   }
-  // idb 中没有数据，尝试从 localStorage 迁移（兼容老数据）
-  return migrateFromLocalStorage<T>(config)
+  return null
 }
 
 async function getLocal<T>(config: CacheConfig): Promise<T | null> {
@@ -270,7 +248,6 @@ async function getLocal<T>(config: CacheConfig): Promise<T | null> {
 }
 
 async function setLocal<T>(config: CacheConfig, val: T | null, updated_at: string): Promise<void> {
-  // idb 原生支持对象存储，直接存对象，无需 JSON.stringify
   const payload: LocalCacheResult<T> = {
     version: config.version,
     val,

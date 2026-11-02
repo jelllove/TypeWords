@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { getStoredString, setStoredString } from '@/core/utils/storage'
 import { useBaseStore } from '@/core/stores/base.ts'
 import { useRouter } from 'vue-router'
 import {
@@ -172,7 +173,7 @@ watch(
         const Shepherd = await loadJsLib('Shepherd', LIB_JS_URL.SHEPHERD)
         const tour = new Shepherd.Tour(TourConfig)
         tour.on('cancel', () => {
-          localStorage.setItem('tour-guide', '1')
+          setStoredString('tour-guide', '1')
         })
         tour.addStep({
           id: 'step1',
@@ -191,7 +192,7 @@ watch(
             },
           ],
         })
-        const r = localStorage.getItem('tour-guide')
+        const r = getStoredString('tour-guide')
         if (settingStore.first && !r && !isMobile()) tour.start()
       }, 500)
     }

@@ -1,6 +1,6 @@
 import { defineStore } from 'pinia'
 import { checkAndUpgradeSaveSetting, cloneDeep, parseJsonStr } from '../utils'
-import { get, set } from 'idb-keyval'
+import { get, set } from '../utils/storage'
 import { APP_VERSION, DefaultShortcutKeyMap, SAVE_SETTING_KEY } from '../config/env'
 import { IdentifyMethod, type SaveData, WordPracticeMode, WordPracticeType } from '../types'
 import type { FSRSParameters } from 'ts-fsrs'

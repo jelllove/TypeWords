@@ -1,4 +1,4 @@
-import { get, set } from 'idb-keyval'
+import { get, set } from '@/core/utils/storage'
 import type { SentencePracticeItem, SentencePracticeMode } from './types.ts'
 
 type CacheConfig = { key: string; version: number }

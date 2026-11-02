@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { BaseButton, Close } from '@/base'
 import { watch } from 'vue'
+import { getStoredString, setStoredString } from '@/core/utils/storage'
 import { APP_NAME, Host } from '@/core/config/env.ts'
 import { isMobile } from '@/core/utils'
 
@@ -24,13 +25,13 @@ function close() {
   clearInterval(timer)
   show = false
   model.value = false
-  localStorage.setItem('showConflictNotice', '1')
+  setStoredString('showConflictNotice', '1')
 }
 
 watch(
   model,
   n => {
-    if (n && !localStorage.getItem('showConflictNotice')) {
+    if (n && !getStoredString('showConflictNotice')) {
       setTimeout(() => {
         show = true
       }, 300)

@@ -15,7 +15,7 @@ import {
   LOCAL_FILE_KEY,
   Origin,
 } from '@/core/config/env'
-import { get, set } from 'idb-keyval'
+import { get, set, getStoredString, setStoredString, removeStoredString } from '@/core/utils/storage'
 import { useRuntimeStore } from '@/core/stores/runtime'
 import { useExport } from '@/core/hooks/export'
 import Log from '@/components/setting/Log.vue'
@@ -30,6 +30,7 @@ import { useDataSyncPersistence } from '@/core/composables/useDataSyncPersistenc
 import SettingItem from '@/components/setting/SettingItem.vue'
 import { Supabase } from '@/core/utils/supabase.ts'
 import BackupGateDialog from '@/components/dialog/BackupGateDialog.vue'
+import LocalDataSetting from '@/components/setting/LocalDataSetting.vue'
 
 import { createClient } from '@supabase/supabase-js'
 import { useRoute } from 'vue-router'
@@ -556,12 +557,12 @@ function removeSbConfig() {
 }
 
 function disable360() {
-  let disabled = localStorage.getItem('disable360')
+  let disabled = getStoredString('disable360')
   if (disabled) {
-    localStorage.removeItem('disable360')
+    removeStoredString('disable360')
     Toast.success('已清除')
   } else {
-    localStorage.setItem('disable360', '1')
+    setStoredString('disable360', '1')
     Toast.success('已设置')
   }
 }
@@ -628,10 +629,11 @@ function disable360() {
           <SoundSetting v-if="tabIndex === 4" />
 
           <div v-if="tabIndex === 5">
+            <LocalDataSetting />
             <!--            导出数据-->
             <SettingItem
               :title="$t('export_data_title')"
-              :desc="$t('data_saved_locally') + $t('export_data_desc_suffix', { appName: APP_NAME })"
+              :desc="t('local_folder_export_desc', 'Export a ZIP backup of the data saved in the local folder for another computer or server.')"
             >
               <BaseButton size="large" :loading="exportLoading" @click="exportData()">{{
                 $t('export_data_backup')

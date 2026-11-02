@@ -3,6 +3,7 @@ import { shallowRef } from 'vue'
 import type { TaskWords, Word } from '@/core/types/types.ts'
 import { WordPracticeMode } from '@/core/types/enum.ts'
 import { shuffle } from '@/core/utils'
+import { getStoredString, setStoredString } from '@/core/utils/storage'
 import {
   BUILTIN_FLOWS,
   CURRENT_FLOW_VERSION,
@@ -52,7 +53,7 @@ function isRecord(value: unknown): value is Record<string, unknown> {
 
 function getFlowStorage(): PracticeFlowStorageData {
   try {
-    const raw = localStorage.getItem(FLOW_STORAGE_KEY)
+    const raw = getStoredString(FLOW_STORAGE_KEY)
     if (raw) {
       const parsed = JSON.parse(raw)
       if (parsed && typeof parsed === 'object' && parsed.flows && typeof parsed.flows === 'object') {
@@ -63,13 +64,13 @@ function getFlowStorage(): PracticeFlowStorageData {
       }
     }
   } catch {
-    // localStorage 不可用或数据损坏时回退为空配置。
+    // 兼容损坏的旧流程配置。
   }
   return { activeId: '', flows: {} }
 }
 
 function setFlowStorage(data: PracticeFlowStorageData) {
-  localStorage.setItem(FLOW_STORAGE_KEY, JSON.stringify(data))
+  setStoredString(FLOW_STORAGE_KEY, JSON.stringify(data))
 }
 
 function isValidSubStep(value: unknown): value is PracticeLoopSubStep {
